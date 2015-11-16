@@ -43,9 +43,9 @@ class CDBTest(unittest.TestCase):
     def test_it(self):
         from wozozo_cdb import CDB
         import base64
-        import gzip
-        testdata = base64.b64decode(b'H4sICJwISlYAA3Rlc3RkYXRhLmNkYgAT4GAAA4FRetDRTEBaAcofpUfpUXqUHqVHaWrSLFBcklpcAsIMUGC8vriGAagGAEfyRsEgCAAA')
-        self.f.write(gzip.decompress(testdata))
+        import zlib
+        testdata = base64.b64decode(b'eJwT4GAAA4FRetDRTEBaAcofpUfpUXqUHqVHaWrSLFBcklpcAsIMUGC8vriGAagGADizKiQ=')
+        self.f.write(zlib.decompress(testdata))
         self.f.seek(0, 0)
         x = CDB(self.f)
         x.findstart()
