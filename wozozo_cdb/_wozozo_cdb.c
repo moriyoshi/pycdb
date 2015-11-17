@@ -467,10 +467,26 @@ static const char *__pyx_f[] = {
 };
 
 /*--- Type declarations ---*/
+struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor;
 struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB;
 struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake;
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":32
+/* "wozozo_cdb/_wozozo_cdb.pyx":34
+ * 
+ * 
+ * cdef class CDBCursor:             # <<<<<<<<<<<<<<
+ *     cdef CDB o
+ *     cdef cdb_cursor i
+ */
+struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor {
+  PyObject_HEAD
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *o;
+  struct cdb_cursor i;
+  int readable;
+};
+
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":89
  * 
  * 
  * cdef class CDB:             # <<<<<<<<<<<<<<
@@ -483,11 +499,10 @@ struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB {
   struct cdb i;
   PyObject *file;
   PyObject *encoding;
-  int readable;
 };
 
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":107
+/* "wozozo_cdb/_wozozo_cdb.pyx":130
  * 
  * 
  * cdef class CDBMake:             # <<<<<<<<<<<<<<
@@ -504,7 +519,7 @@ struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake {
 
 
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":32
+/* "wozozo_cdb/_wozozo_cdb.pyx":89
  * 
  * 
  * cdef class CDB:             # <<<<<<<<<<<<<<
@@ -518,7 +533,7 @@ struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDB {
 static struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDB;
 
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":107
+/* "wozozo_cdb/_wozozo_cdb.pyx":130
  * 
  * 
  * cdef class CDBMake:             # <<<<<<<<<<<<<<
@@ -620,11 +635,19 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+static CYTHON_INLINE int __Pyx_ArgTypeTest(PyObject *obj, PyTypeObject *type, int none_allowed,
+    const char *name, int exact);
+
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
 #else
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
 #endif
+
+static CYTHON_INLINE void __Pyx_ErrRestore(PyObject *type, PyObject *value, PyObject *tb);
+static CYTHON_INLINE void __Pyx_ErrFetch(PyObject **type, PyObject **value, PyObject **tb);
+
+static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg);
@@ -637,11 +660,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
 #else
 #define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
 #endif
-
-static CYTHON_INLINE void __Pyx_ErrRestore(PyObject *type, PyObject *value, PyObject *tb);
-static CYTHON_INLINE void __Pyx_ErrFetch(PyObject **type, PyObject **value, PyObject **tb);
-
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
 
 static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
@@ -666,11 +684,11 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object);
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
-static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
-
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value);
 
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+
+static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 static CYTHON_INLINE unsigned int __Pyx_PyInt_As_unsigned_int(PyObject *);
 
@@ -696,6 +714,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
 /* Module declarations from 'libc.errno' */
 
 /* Module declarations from 'wozozo_cdb._wozozo_cdb' */
+static PyTypeObject *__pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDBCursor = 0;
 static PyTypeObject *__pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDB = 0;
 static PyTypeObject *__pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDBMake = 0;
 #define __Pyx_MODULE_NAME "wozozo_cdb._wozozo_cdb"
@@ -705,12 +724,17 @@ int __pyx_module_is_main_wozozo_cdb___wozozo_cdb = 0;
 static PyObject *__pyx_builtin_IOError;
 static PyObject *__pyx_builtin_Exception;
 static PyObject *__pyx_builtin_ValueError;
+static PyObject *__pyx_builtin_KeyError;
 static char __pyx_k_n[] = "n";
+static char __pyx_k_o[] = "o";
+static char __pyx_k__4[] = "'";
 static char __pyx_k_buf[] = "buf";
 static char __pyx_k_key[] = "key";
 static char __pyx_k_data[] = "data";
 static char __pyx_k_file[] = "file";
+static char __pyx_k_free[] = "free";
 static char __pyx_k_main[] = "__main__";
+static char __pyx_k_read[] = "read";
 static char __pyx_k_test[] = "__test__";
 static char __pyx_k_ascii[] = "ascii";
 static char __pyx_k_decode[] = "decode";
@@ -718,15 +742,20 @@ static char __pyx_k_encode[] = "encode";
 static char __pyx_k_fileno[] = "fileno";
 static char __pyx_k_finish[] = "finish";
 static char __pyx_k_IOError[] = "IOError";
+static char __pyx_k_KeyError[] = "KeyError";
 static char __pyx_k_encoding[] = "encoding";
+static char __pyx_k_findnext[] = "findnext";
 static char __pyx_k_Exception[] = "Exception";
+static char __pyx_k_findstart[] = "findstart";
 static char __pyx_k_ValueError[] = "ValueError";
 static char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static char __pyx_k_data_is_unavailable[] = "data is unavailable";
 static char __pyx_k_n_must_be_equal_to_or_greater_th[] = "n must be equal to or greater than 0";
 static PyObject *__pyx_n_s_Exception;
 static PyObject *__pyx_n_s_IOError;
+static PyObject *__pyx_n_s_KeyError;
 static PyObject *__pyx_n_s_ValueError;
+static PyObject *__pyx_kp_s__4;
 static PyObject *__pyx_n_s_ascii;
 static PyObject *__pyx_n_s_buf;
 static PyObject *__pyx_n_s_data;
@@ -736,29 +765,38 @@ static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_encoding;
 static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_fileno;
+static PyObject *__pyx_n_s_findnext;
+static PyObject *__pyx_n_s_findstart;
 static PyObject *__pyx_n_s_finish;
+static PyObject *__pyx_n_s_free;
 static PyObject *__pyx_n_s_key;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_n;
 static PyObject *__pyx_kp_s_n_must_be_equal_to_or_greater_th;
+static PyObject *__pyx_n_s_o;
 static PyObject *__pyx_n_s_pyx_vtable;
+static PyObject *__pyx_n_s_read;
 static PyObject *__pyx_n_s_test;
+static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor___cinit__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_o); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_2findnext(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_key); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4read(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_decode); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_6readbuf(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_buf, PyObject *__pyx_v_n); /* proto */
 static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_file, PyObject *__pyx_v_encoding); /* proto */
 static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_2__dealloc__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4file___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8encoding___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4findstart(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findnext(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_key); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8read(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_decode); /* proto */
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_10readbuf(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_buf, PyObject *__pyx_v_n); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4free(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findstart(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8__getitem__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_k); /* proto */
 static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self, PyObject *__pyx_v_file, PyObject *__pyx_v_encoding); /* proto */
 static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_2__dealloc__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4file___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_8encoding___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *__pyx_v_self, PyObject *__pyx_v_key, PyObject *__pyx_v_data); /* proto */
+static PyObject *__pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDBCursor(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDB(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDBMake(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
@@ -766,8 +804,1036 @@ static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":38
+/* "wozozo_cdb/_wozozo_cdb.pyx":39
  *     cdef int readable
+ * 
+ *     def __cinit__(self, CDB o):             # <<<<<<<<<<<<<<
+ *         self.o = o
+ *         cdb_findstart(&o.i, &self.i)
+ */
+
+/* Python wrapper */
+static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_o = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_o,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_o)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 39; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_o = ((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)values[0]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 39; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_o), __pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDB, 1, "o", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 39; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor___cinit__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self), __pyx_v_o);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor___cinit__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_o) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":40
+ * 
+ *     def __cinit__(self, CDB o):
+ *         self.o = o             # <<<<<<<<<<<<<<
+ *         cdb_findstart(&o.i, &self.i)
+ * 
+ */
+  __Pyx_INCREF(((PyObject *)__pyx_v_o));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_o));
+  __Pyx_GOTREF(__pyx_v_self->o);
+  __Pyx_DECREF(((PyObject *)__pyx_v_self->o));
+  __pyx_v_self->o = __pyx_v_o;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":41
+ *     def __cinit__(self, CDB o):
+ *         self.o = o
+ *         cdb_findstart(&o.i, &self.i)             # <<<<<<<<<<<<<<
+ * 
+ *     property dpos:
+ */
+  cdb_findstart((&__pyx_v_o->i), (&__pyx_v_self->i));
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":39
+ *     cdef int readable
+ * 
+ *     def __cinit__(self, CDB o):             # <<<<<<<<<<<<<<
+ *         self.o = o
+ *         cdb_findstart(&o.i, &self.i)
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":44
+ * 
+ *     property dpos:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             return self.i.dpos
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos___get__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":45
+ *     property dpos:
+ *         def __get__(self):
+ *             return self.i.dpos             # <<<<<<<<<<<<<<
+ * 
+ *     property dlen:
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dpos); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 45; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":44
+ * 
+ *     property dpos:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             return self.i.dpos
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.dpos.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":48
+ * 
+ *     property dlen:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             return self.i.dlen
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen___get__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":49
+ *     property dlen:
+ *         def __get__(self):
+ *             return self.i.dlen             # <<<<<<<<<<<<<<
+ * 
+ *     def findnext(self, key):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":48
+ * 
+ *     property dlen:
+ *         def __get__(self):             # <<<<<<<<<<<<<<
+ *             return self.i.dlen
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.dlen.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":51
+ *             return self.i.dlen
+ * 
+ *     def findnext(self, key):             # <<<<<<<<<<<<<<
+ *         cdef bytes key_b = self.o._chars(key)
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_3findnext(PyObject *__pyx_v_self, PyObject *__pyx_v_key); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_3findnext(PyObject *__pyx_v_self, PyObject *__pyx_v_key) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("findnext (wrapper)", 0);
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_2findnext(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self), ((PyObject *)__pyx_v_key));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_2findnext(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_key) {
+  PyObject *__pyx_v_key_b = 0;
+  int __pyx_v_retval;
+  PyObject *__pyx_v_readable = NULL;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  char const *__pyx_t_2;
+  Py_ssize_t __pyx_t_3;
+  int __pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_t_7;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("findnext", 0);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":52
+ * 
+ *     def findnext(self, key):
+ *         cdef bytes key_b = self.o._chars(key)             # <<<<<<<<<<<<<<
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ *         if retval < 0:
+ */
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self->o->__pyx_vtab)->_chars(__pyx_v_self->o, __pyx_v_key); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_v_key_b = ((PyObject*)__pyx_t_1);
+  __pyx_t_1 = 0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":53
+ *     def findnext(self, key):
+ *         cdef bytes key_b = self.o._chars(key)
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))             # <<<<<<<<<<<<<<
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ */
+  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_key_b); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (unlikely(__pyx_v_key_b == Py_None)) {
+    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  }
+  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_key_b); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_retval = cdb_findnext((&__pyx_v_self->o->i), (&__pyx_v_self->i), __pyx_t_2, __pyx_t_3);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":54
+ *         cdef bytes key_b = self.o._chars(key)
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         readable = retval != 0
+ */
+  __pyx_t_4 = ((__pyx_v_retval < 0) != 0);
+  if (__pyx_t_4) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":55
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
+ *         readable = retval != 0
+ *         self.readable = readable
+ */
+    __pyx_t_1 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_5 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_6);
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
+    __pyx_t_1 = 0;
+    __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_Raise(__pyx_t_5, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":54
+ *         cdef bytes key_b = self.o._chars(key)
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         readable = retval != 0
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":56
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         readable = retval != 0             # <<<<<<<<<<<<<<
+ *         self.readable = readable
+ *         return readable
+ */
+  __pyx_t_5 = __Pyx_PyBool_FromLong((__pyx_v_retval != 0)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_v_readable = __pyx_t_5;
+  __pyx_t_5 = 0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":57
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         readable = retval != 0
+ *         self.readable = readable             # <<<<<<<<<<<<<<
+ *         return readable
+ * 
+ */
+  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_readable); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 57; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_self->readable = __pyx_t_7;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":58
+ *         readable = retval != 0
+ *         self.readable = readable
+ *         return readable             # <<<<<<<<<<<<<<
+ * 
+ *     def read(self, decode=True):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_readable);
+  __pyx_r = __pyx_v_readable;
+  goto __pyx_L0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":51
+ *             return self.i.dlen
+ * 
+ *     def findnext(self, key):             # <<<<<<<<<<<<<<
+ *         cdef bytes key_b = self.o._chars(key)
+ *         cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.findnext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_key_b);
+  __Pyx_XDECREF(__pyx_v_readable);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":60
+ *         return readable
+ * 
+ *     def read(self, decode=True):             # <<<<<<<<<<<<<<
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_5read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_5read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_decode = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("read (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_decode,0};
+    PyObject* values[1] = {0};
+    values[0] = ((PyObject *)Py_True);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_decode);
+          if (value) { values[0] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 60; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_decode = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("read", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 60; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4read(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self), __pyx_v_decode);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4read(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_decode) {
+  PyObject *__pyx_v_buf = NULL;
+  int __pyx_v_retval;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  char *__pyx_t_4;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("read", 0);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":61
+ * 
+ *     def read(self, decode=True):
+ *         if not self.readable:             # <<<<<<<<<<<<<<
+ *             raise Exception('data is unavailable')
+ *         buf = bytearray(self.i.dlen)
+ */
+  __pyx_t_1 = ((!(__pyx_v_self->readable != 0)) != 0);
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":62
+ *     def read(self, decode=True):
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
+ *         buf = bytearray(self.i.dlen)
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+ */
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":61
+ * 
+ *     def read(self, decode=True):
+ *         if not self.readable:             # <<<<<<<<<<<<<<
+ *             raise Exception('data is unavailable')
+ *         buf = bytearray(self.i.dlen)
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":63
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ *         buf = bytearray(self.i.dlen)             # <<<<<<<<<<<<<<
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+ *         if retval < 0:
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
+  __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyByteArray_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 63; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_v_buf = __pyx_t_2;
+  __pyx_t_2 = 0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":64
+ *             raise Exception('data is unavailable')
+ *         buf = bytearray(self.i.dlen)
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)             # <<<<<<<<<<<<<<
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ */
+  __pyx_t_4 = __Pyx_PyObject_AsString(__pyx_v_buf); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 64; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_retval = cdb_read((&__pyx_v_self->o->i), __pyx_t_4, __pyx_v_self->i.dlen, __pyx_v_self->i.dpos);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":65
+ *         buf = bytearray(self.i.dlen)
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         if decode:
+ */
+  __pyx_t_1 = ((__pyx_v_retval < 0) != 0);
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":66
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
+ *         if decode:
+ *             buf = buf.decode(self.o.encoding)
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
+    __pyx_t_2 = 0;
+    __pyx_t_3 = 0;
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 66; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":65
+ *         buf = bytearray(self.i.dlen)
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         if decode:
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":67
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         if decode:             # <<<<<<<<<<<<<<
+ *             buf = buf.decode(self.o.encoding)
+ *         return buf
+ */
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_decode); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 67; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":68
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         if decode:
+ *             buf = buf.decode(self.o.encoding)             # <<<<<<<<<<<<<<
+ *         return buf
+ * 
+ */
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_buf, __pyx_n_s_decode); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_2 = NULL;
+    if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
+      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_5);
+      if (likely(__pyx_t_2)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+        __Pyx_INCREF(__pyx_t_2);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_5, function);
+      }
+    }
+    if (!__pyx_t_2) {
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_self->o->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_3);
+    } else {
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_6);
+      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
+      __Pyx_INCREF(__pyx_v_self->o->encoding);
+      __Pyx_GIVEREF(__pyx_v_self->o->encoding);
+      PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_self->o->encoding);
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 68; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    }
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF_SET(__pyx_v_buf, __pyx_t_3);
+    __pyx_t_3 = 0;
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":67
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         if decode:             # <<<<<<<<<<<<<<
+ *             buf = buf.decode(self.o.encoding)
+ *         return buf
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":69
+ *         if decode:
+ *             buf = buf.decode(self.o.encoding)
+ *         return buf             # <<<<<<<<<<<<<<
+ * 
+ *     def readbuf(self, buf, n):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_buf);
+  __pyx_r = __pyx_v_buf;
+  goto __pyx_L0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":60
+ *         return readable
+ * 
+ *     def read(self, decode=True):             # <<<<<<<<<<<<<<
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_buf);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":71
+ *         return buf
+ * 
+ *     def readbuf(self, buf, n):             # <<<<<<<<<<<<<<
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_7readbuf(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_7readbuf(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_buf = 0;
+  PyObject *__pyx_v_n = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("readbuf (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_buf,&__pyx_n_s_n,0};
+    PyObject* values[2] = {0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_buf)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        case  1:
+        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_n)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("readbuf", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "readbuf") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+    }
+    __pyx_v_buf = values[0];
+    __pyx_v_n = values[1];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("readbuf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 71; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.readbuf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_6readbuf(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)__pyx_v_self), __pyx_v_buf, __pyx_v_n);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_6readbuf(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *__pyx_v_self, PyObject *__pyx_v_buf, PyObject *__pyx_v_n) {
+  int __pyx_v_retval;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_3;
+  PyObject *__pyx_t_4 = NULL;
+  char *__pyx_t_5;
+  unsigned int __pyx_t_6;
+  PyObject *__pyx_t_7 = NULL;
+  uint32_t __pyx_t_8;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("readbuf", 0);
+  __Pyx_INCREF(__pyx_v_n);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":72
+ * 
+ *     def readbuf(self, buf, n):
+ *         if not self.readable:             # <<<<<<<<<<<<<<
+ *             raise Exception('data is unavailable')
+ *         if n > len(buf):
+ */
+  __pyx_t_1 = ((!(__pyx_v_self->readable != 0)) != 0);
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":73
+ *     def readbuf(self, buf, n):
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
+ *         if n > len(buf):
+ *             n = len(buf)
+ */
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":72
+ * 
+ *     def readbuf(self, buf, n):
+ *         if not self.readable:             # <<<<<<<<<<<<<<
+ *             raise Exception('data is unavailable')
+ *         if n > len(buf):
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":74
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ *         if n > len(buf):             # <<<<<<<<<<<<<<
+ *             n = len(buf)
+ *         if n > self.i.dlen:
+ */
+  __pyx_t_3 = PyObject_Length(__pyx_v_buf); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyObject_RichCompare(__pyx_v_n, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 74; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":75
+ *             raise Exception('data is unavailable')
+ *         if n > len(buf):
+ *             n = len(buf)             # <<<<<<<<<<<<<<
+ *         if n > self.i.dlen:
+ *             n = self.i.dlen
+ */
+    __pyx_t_3 = PyObject_Length(__pyx_v_buf); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF_SET(__pyx_v_n, __pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":74
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ *         if n > len(buf):             # <<<<<<<<<<<<<<
+ *             n = len(buf)
+ *         if n > self.i.dlen:
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":76
+ *         if n > len(buf):
+ *             n = len(buf)
+ *         if n > self.i.dlen:             # <<<<<<<<<<<<<<
+ *             n = self.i.dlen
+ *         if n < 0:
+ */
+  __pyx_t_4 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_n, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":77
+ *             n = len(buf)
+ *         if n > self.i.dlen:
+ *             n = self.i.dlen             # <<<<<<<<<<<<<<
+ *         if n < 0:
+ *             raise ValueError('n must be equal to or greater than 0')
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF_SET(__pyx_v_n, __pyx_t_2);
+    __pyx_t_2 = 0;
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":76
+ *         if n > len(buf):
+ *             n = len(buf)
+ *         if n > self.i.dlen:             # <<<<<<<<<<<<<<
+ *             n = self.i.dlen
+ *         if n < 0:
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":78
+ *         if n > self.i.dlen:
+ *             n = self.i.dlen
+ *         if n < 0:             # <<<<<<<<<<<<<<
+ *             raise ValueError('n must be equal to or greater than 0')
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ */
+  __pyx_t_2 = PyObject_RichCompare(__pyx_v_n, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 78; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 78; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":79
+ *             n = self.i.dlen
+ *         if n < 0:
+ *             raise ValueError('n must be equal to or greater than 0')             # <<<<<<<<<<<<<<
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ *         if retval < 0:
+ */
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":78
+ *         if n > self.i.dlen:
+ *             n = self.i.dlen
+ *         if n < 0:             # <<<<<<<<<<<<<<
+ *             raise ValueError('n must be equal to or greater than 0')
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":80
+ *         if n < 0:
+ *             raise ValueError('n must be equal to or greater than 0')
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)             # <<<<<<<<<<<<<<
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ */
+  __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_buf); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_6 = __Pyx_PyInt_As_unsigned_int(__pyx_v_n); if (unlikely((__pyx_t_6 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_v_retval = cdb_read((&__pyx_v_self->o->i), __pyx_t_5, __pyx_t_6, __pyx_v_self->i.dpos);
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":81
+ *             raise ValueError('n must be equal to or greater than 0')
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         self.i.dpos += n
+ */
+  __pyx_t_1 = ((__pyx_v_retval < 0) != 0);
+  if (__pyx_t_1) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":82
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
+ *         self.i.dpos += n
+ *         self.i.dlen -= n
+ */
+    __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_4);
+    __pyx_t_2 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":81
+ *             raise ValueError('n must be equal to or greater than 0')
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+ *         if retval < 0:             # <<<<<<<<<<<<<<
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         self.i.dpos += n
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":83
+ *         if retval < 0:
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         self.i.dpos += n             # <<<<<<<<<<<<<<
+ *         self.i.dlen -= n
+ *         return n
+ */
+  __pyx_t_4 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dpos); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_v_n); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_8 = __Pyx_PyInt_As_uint32_t(__pyx_t_7); if (unlikely((__pyx_t_8 == (uint32_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_v_self->i.dpos = __pyx_t_8;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":84
+ *             raise IOError(errno.errno, strerror(errno.errno))
+ *         self.i.dpos += n
+ *         self.i.dlen -= n             # <<<<<<<<<<<<<<
+ *         return n
+ * 
+ */
+  __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_4 = PyNumber_InPlaceSubtract(__pyx_t_7, __pyx_v_n); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __pyx_t_8 = __Pyx_PyInt_As_uint32_t(__pyx_t_4); if (unlikely((__pyx_t_8 == (uint32_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_v_self->i.dlen = __pyx_t_8;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":85
+ *         self.i.dpos += n
+ *         self.i.dlen -= n
+ *         return n             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_n);
+  __pyx_r = __pyx_v_n;
+  goto __pyx_L0;
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":71
+ *         return buf
+ * 
+ *     def readbuf(self, buf, n):             # <<<<<<<<<<<<<<
+ *         if not self.readable:
+ *             raise Exception('data is unavailable')
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_7);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBCursor.readbuf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_n);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "wozozo_cdb/_wozozo_cdb.pyx":94
+ *     cdef str encoding
  * 
  *     def __cinit__(self, file, encoding='ascii'):             # <<<<<<<<<<<<<<
  *         self.file = file
@@ -810,7 +1876,7 @@ static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_1__cinit__(PyObject *__pyx_v
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -825,7 +1891,7 @@ static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_1__cinit__(PyObject *__pyx_v
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 38; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -850,7 +1916,7 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_1
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":39
+  /* "wozozo_cdb/_wozozo_cdb.pyx":95
  * 
  *     def __cinit__(self, file, encoding='ascii'):
  *         self.file = file             # <<<<<<<<<<<<<<
@@ -863,14 +1929,14 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_1
   __Pyx_DECREF(__pyx_v_self->file);
   __pyx_v_self->file = __pyx_v_file;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":40
+  /* "wozozo_cdb/_wozozo_cdb.pyx":96
  *     def __cinit__(self, file, encoding='ascii'):
  *         self.file = file
  *         self.encoding = encoding             # <<<<<<<<<<<<<<
  *         cdb_init(&self.i, file.fileno())
  * 
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_encoding))||((__pyx_v_encoding) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_encoding)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 40; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_encoding))||((__pyx_v_encoding) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_encoding)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_encoding;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -879,14 +1945,14 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_1
   __pyx_v_self->encoding = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":41
+  /* "wozozo_cdb/_wozozo_cdb.pyx":97
  *         self.file = file
  *         self.encoding = encoding
  *         cdb_init(&self.i, file.fileno())             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_file, __pyx_n_s_fileno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_file, __pyx_n_s_fileno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -899,19 +1965,19 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_1
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 41; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   cdb_init((&__pyx_v_self->i), __pyx_t_4);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":38
- *     cdef int readable
+  /* "wozozo_cdb/_wozozo_cdb.pyx":94
+ *     cdef str encoding
  * 
  *     def __cinit__(self, file, encoding='ascii'):             # <<<<<<<<<<<<<<
  *         self.file = file
@@ -932,11 +1998,11 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB___cinit__(struct __pyx_obj_1
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":43
+/* "wozozo_cdb/_wozozo_cdb.pyx":99
  *         cdb_init(&self.i, file.fileno())
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
- *         cdb_free(&self.i)
+ *         self.free()
  * 
  */
 
@@ -953,31 +2019,64 @@ static void __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_3__dealloc__(PyObject *__py
 
 static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_2__dealloc__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":44
+  /* "wozozo_cdb/_wozozo_cdb.pyx":100
  * 
  *     def __dealloc__(self):
- *         cdb_free(&self.i)             # <<<<<<<<<<<<<<
+ *         self.free()             # <<<<<<<<<<<<<<
  * 
  *     cdef bytes _chars(self, s):
  */
-  cdb_free((&__pyx_v_self->i));
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_free); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  if (__pyx_t_3) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  }
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":43
+  /* "wozozo_cdb/_wozozo_cdb.pyx":99
  *         cdb_init(&self.i, file.fileno())
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
- *         cdb_free(&self.i)
+ *         self.free()
  * 
  */
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_WriteUnraisable("wozozo_cdb._wozozo_cdb.CDB.__dealloc__", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":46
- *         cdb_free(&self.i)
+/* "wozozo_cdb/_wozozo_cdb.pyx":102
+ *         self.free()
  * 
  *     cdef bytes _chars(self, s):             # <<<<<<<<<<<<<<
  *         if isinstance(s, unicode):
@@ -999,7 +2098,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
   __Pyx_RefNannySetupContext("_chars", 0);
   __Pyx_INCREF(__pyx_v_s);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":47
+  /* "wozozo_cdb/_wozozo_cdb.pyx":103
  * 
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):             # <<<<<<<<<<<<<<
@@ -1010,14 +2109,14 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":48
+    /* "wozozo_cdb/_wozozo_cdb.pyx":104
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):
  *             s = (<unicode>s).encode(self.encoding)             # <<<<<<<<<<<<<<
  *         return s
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -1030,16 +2129,16 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_INCREF(__pyx_v_self->encoding);
       __Pyx_GIVEREF(__pyx_v_self->encoding);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_self->encoding);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 48; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -1047,7 +2146,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
     __Pyx_DECREF_SET(__pyx_v_s, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":47
+    /* "wozozo_cdb/_wozozo_cdb.pyx":103
  * 
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):             # <<<<<<<<<<<<<<
@@ -1056,7 +2155,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
  */
   }
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":49
+  /* "wozozo_cdb/_wozozo_cdb.pyx":105
  *         if isinstance(s, unicode):
  *             s = (<unicode>s).encode(self.encoding)
  *         return s             # <<<<<<<<<<<<<<
@@ -1064,13 +2163,13 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
  *     property file:
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyBytes_CheckExact(__pyx_v_s))||((__pyx_v_s) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_s)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 49; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_v_s))||((__pyx_v_s) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_s)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 105; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(__pyx_v_s);
   __pyx_r = ((PyObject*)__pyx_v_s);
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":46
- *         cdb_free(&self.i)
+  /* "wozozo_cdb/_wozozo_cdb.pyx":102
+ *         self.free()
  * 
  *     cdef bytes _chars(self, s):             # <<<<<<<<<<<<<<
  *         if isinstance(s, unicode):
@@ -1092,7 +2191,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":52
+/* "wozozo_cdb/_wozozo_cdb.pyx":108
  * 
  *     property file:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1118,7 +2217,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4file___get__(struct _
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":53
+  /* "wozozo_cdb/_wozozo_cdb.pyx":109
  *     property file:
  *         def __get__(self):
  *             return self.file             # <<<<<<<<<<<<<<
@@ -1130,7 +2229,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4file___get__(struct _
   __pyx_r = __pyx_v_self->file;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":52
+  /* "wozozo_cdb/_wozozo_cdb.pyx":108
  * 
  *     property file:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1145,7 +2244,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4file___get__(struct _
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":56
+/* "wozozo_cdb/_wozozo_cdb.pyx":112
  * 
  *     property encoding:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1171,19 +2270,19 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8encoding___get__(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":57
+  /* "wozozo_cdb/_wozozo_cdb.pyx":113
  *     property encoding:
  *         def __get__(self):
  *             return self.encoding             # <<<<<<<<<<<<<<
  * 
- *     property dpos:
+ *     def free(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_self->encoding);
   __pyx_r = __pyx_v_self->encoding;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":56
+  /* "wozozo_cdb/_wozozo_cdb.pyx":112
  * 
  *     property encoding:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -1198,978 +2297,350 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8encoding___get__(stru
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":60
+/* "wozozo_cdb/_wozozo_cdb.pyx":115
+ *             return self.encoding
  * 
- *     property dpos:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             return self.i.dpos
- * 
+ *     def free(self):             # <<<<<<<<<<<<<<
+ *         if self.i.fd >= 0:
+ *             cdb_free(&self.i)
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5free(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5free(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos___get__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("free (wrapper)", 0);
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4free(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4free(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__get__", 0);
+  int __pyx_t_1;
+  __Pyx_RefNannySetupContext("free", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":61
- *     property dpos:
- *         def __get__(self):
- *             return self.i.dpos             # <<<<<<<<<<<<<<
+  /* "wozozo_cdb/_wozozo_cdb.pyx":116
  * 
- *     property dlen:
+ *     def free(self):
+ *         if self.i.fd >= 0:             # <<<<<<<<<<<<<<
+ *             cdb_free(&self.i)
+ *             self.i.fd = -1
  */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dpos); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 61; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
+  __pyx_t_1 = ((__pyx_v_self->i.fd >= 0) != 0);
+  if (__pyx_t_1) {
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":60
- * 
- *     property dpos:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             return self.i.dpos
+    /* "wozozo_cdb/_wozozo_cdb.pyx":117
+ *     def free(self):
+ *         if self.i.fd >= 0:
+ *             cdb_free(&self.i)             # <<<<<<<<<<<<<<
+ *             self.i.fd = -1
  * 
  */
+    cdb_free((&__pyx_v_self->i));
 
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.dpos.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "wozozo_cdb/_wozozo_cdb.pyx":64
- * 
- *     property dlen:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             return self.i.dlen
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen_1__get__(PyObject *__pyx_v_self) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen___get__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen___get__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("__get__", 0);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":65
- *     property dlen:
- *         def __get__(self):
- *             return self.i.dlen             # <<<<<<<<<<<<<<
+    /* "wozozo_cdb/_wozozo_cdb.pyx":118
+ *         if self.i.fd >= 0:
+ *             cdb_free(&self.i)
+ *             self.i.fd = -1             # <<<<<<<<<<<<<<
  * 
  *     def findstart(self):
  */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
+    __pyx_v_self->i.fd = -1;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":64
+    /* "wozozo_cdb/_wozozo_cdb.pyx":116
  * 
- *     property dlen:
- *         def __get__(self):             # <<<<<<<<<<<<<<
- *             return self.i.dlen
+ *     def free(self):
+ *         if self.i.fd >= 0:             # <<<<<<<<<<<<<<
+ *             cdb_free(&self.i)
+ *             self.i.fd = -1
+ */
+  }
+
+  /* "wozozo_cdb/_wozozo_cdb.pyx":115
+ *             return self.encoding
  * 
+ *     def free(self):             # <<<<<<<<<<<<<<
+ *         if self.i.fd >= 0:
+ *             cdb_free(&self.i)
  */
 
   /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.dlen.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":67
- *             return self.i.dlen
+/* "wozozo_cdb/_wozozo_cdb.pyx":120
+ *             self.i.fd = -1
  * 
  *     def findstart(self):             # <<<<<<<<<<<<<<
- *         cdb_findstart(&self.i)
- *         self.readable = 0
+ *         return CDBCursor(self)
+ * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5findstart(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5findstart(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findstart(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findstart(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("findstart (wrapper)", 0);
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4findstart(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self));
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findstart(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_4findstart(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("findstart", 0);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":68
- * 
- *     def findstart(self):
- *         cdb_findstart(&self.i)             # <<<<<<<<<<<<<<
- *         self.readable = 0
- * 
- */
-  cdb_findstart((&__pyx_v_self->i));
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":69
- *     def findstart(self):
- *         cdb_findstart(&self.i)
- *         self.readable = 0             # <<<<<<<<<<<<<<
- * 
- *     def findnext(self, key):
- */
-  __pyx_v_self->readable = 0;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":67
- *             return self.i.dlen
- * 
- *     def findstart(self):             # <<<<<<<<<<<<<<
- *         cdb_findstart(&self.i)
- *         self.readable = 0
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "wozozo_cdb/_wozozo_cdb.pyx":71
- *         self.readable = 0
- * 
- *     def findnext(self, key):             # <<<<<<<<<<<<<<
- *         cdef bytes key_b = self._chars(key)
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findnext(PyObject *__pyx_v_self, PyObject *__pyx_v_key); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findnext(PyObject *__pyx_v_self, PyObject *__pyx_v_key) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("findnext (wrapper)", 0);
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findnext(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self), ((PyObject *)__pyx_v_key));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findnext(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_key) {
-  PyObject *__pyx_v_key_b = 0;
-  int __pyx_v_retval;
-  PyObject *__pyx_v_readable = NULL;
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_6findstart(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  char const *__pyx_t_2;
-  Py_ssize_t __pyx_t_3;
-  int __pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
-  int __pyx_t_7;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("findnext", 0);
+  __Pyx_RefNannySetupContext("findstart", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":72
+  /* "wozozo_cdb/_wozozo_cdb.pyx":121
  * 
- *     def findnext(self, key):
- *         cdef bytes key_b = self._chars(key)             # <<<<<<<<<<<<<<
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
- *         if retval < 0:
- */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self->__pyx_vtab)->_chars(__pyx_v_self, __pyx_v_key); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 72; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_key_b = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":73
- *     def findnext(self, key):
- *         cdef bytes key_b = self._chars(key)
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))             # <<<<<<<<<<<<<<
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- */
-  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_key_b); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (unlikely(__pyx_v_key_b == Py_None)) {
-    PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_key_b); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_retval = cdb_findnext((&__pyx_v_self->i), __pyx_t_2, __pyx_t_3);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":74
- *         cdef bytes key_b = self._chars(key)
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         readable = retval != 0
- */
-  __pyx_t_4 = ((__pyx_v_retval < 0) != 0);
-  if (__pyx_t_4) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":75
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
- *         readable = retval != 0
- *         self.readable = readable
- */
-    __pyx_t_1 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_1);
-    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1);
-    __Pyx_GIVEREF(__pyx_t_5);
-    PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
-    __pyx_t_1 = 0;
-    __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __Pyx_Raise(__pyx_t_5, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":74
- *         cdef bytes key_b = self._chars(key)
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         readable = retval != 0
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":76
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         readable = retval != 0             # <<<<<<<<<<<<<<
- *         self.readable = readable
- *         return readable
- */
-  __pyx_t_5 = __Pyx_PyBool_FromLong((__pyx_v_retval != 0)); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 76; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_v_readable = __pyx_t_5;
-  __pyx_t_5 = 0;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":77
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         readable = retval != 0
- *         self.readable = readable             # <<<<<<<<<<<<<<
- *         return readable
+ *     def findstart(self):
+ *         return CDBCursor(self)             # <<<<<<<<<<<<<<
  * 
- */
-  __pyx_t_7 = __Pyx_PyInt_As_int(__pyx_v_readable); if (unlikely((__pyx_t_7 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 77; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_self->readable = __pyx_t_7;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":78
- *         readable = retval != 0
- *         self.readable = readable
- *         return readable             # <<<<<<<<<<<<<<
- * 
- *     def read(self, decode=True):
+ *     def __getitem__(self, k):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_readable);
-  __pyx_r = __pyx_v_readable;
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_INCREF(((PyObject *)__pyx_v_self));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
+  PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_v_self));
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDBCursor), __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 121; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":71
- *         self.readable = 0
+  /* "wozozo_cdb/_wozozo_cdb.pyx":120
+ *             self.i.fd = -1
  * 
- *     def findnext(self, key):             # <<<<<<<<<<<<<<
- *         cdef bytes key_b = self._chars(key)
- *         cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
+ *     def findstart(self):             # <<<<<<<<<<<<<<
+ *         return CDBCursor(self)
+ * 
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.findnext", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.findstart", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_key_b);
-  __Pyx_XDECREF(__pyx_v_readable);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":80
- *         return readable
+/* "wozozo_cdb/_wozozo_cdb.pyx":123
+ *         return CDBCursor(self)
  * 
- *     def read(self, decode=True):             # <<<<<<<<<<<<<<
- *         if not self.readable:
- *             raise Exception('data is unavailable')
+ *     def __getitem__(self, k):             # <<<<<<<<<<<<<<
+ *         c = self.findstart()
+ *         if not c.findnext(k):
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9read(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_decode = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_k); /*proto*/
+static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9__getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_k) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("read (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_decode,0};
-    PyObject* values[1] = {0};
-    values[0] = ((PyObject *)Py_True);
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (kw_args > 0) {
-          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_decode);
-          if (value) { values[0] = value; kw_args--; }
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "read") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-      }
-    } else {
-      switch (PyTuple_GET_SIZE(__pyx_args)) {
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-    }
-    __pyx_v_decode = values[0];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("read", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 80; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8read(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self), __pyx_v_decode);
+  __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8__getitem__(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self), ((PyObject *)__pyx_v_k));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8read(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_decode) {
-  PyObject *__pyx_v_buf = NULL;
-  int __pyx_v_retval;
+static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_8__getitem__(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_k) {
+  PyObject *__pyx_v_c = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
+  PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
-  char *__pyx_t_4;
-  PyObject *__pyx_t_5 = NULL;
-  PyObject *__pyx_t_6 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_t_5;
+  int __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("read", 0);
+  __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":81
+  /* "wozozo_cdb/_wozozo_cdb.pyx":124
  * 
- *     def read(self, decode=True):
- *         if not self.readable:             # <<<<<<<<<<<<<<
- *             raise Exception('data is unavailable')
- *         buf = bytearray(self.i.dlen)
+ *     def __getitem__(self, k):
+ *         c = self.findstart()             # <<<<<<<<<<<<<<
+ *         if not c.findnext(k):
+ *             raise KeyError("'" + k + "'")
  */
-  __pyx_t_1 = ((!(__pyx_v_self->readable != 0)) != 0);
-  if (__pyx_t_1) {
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_findstart); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  if (__pyx_t_3) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 124; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  }
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_v_c = __pyx_t_1;
+  __pyx_t_1 = 0;
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":82
- *     def read(self, decode=True):
- *         if not self.readable:
- *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
- *         buf = bytearray(self.i.dlen)
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
+  /* "wozozo_cdb/_wozozo_cdb.pyx":125
+ *     def __getitem__(self, k):
+ *         c = self.findstart()
+ *         if not c.findnext(k):             # <<<<<<<<<<<<<<
+ *             raise KeyError("'" + k + "'")
+ *         return c.read()
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_c, __pyx_n_s_findnext); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = NULL;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_2, function);
+    }
+  }
+  if (!__pyx_t_3) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_v_k); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+  } else {
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
+    __Pyx_INCREF(__pyx_v_k);
+    __Pyx_GIVEREF(__pyx_v_k);
+    PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_v_k);
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_5 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 125; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_6 = ((!__pyx_t_5) != 0);
+  if (__pyx_t_6) {
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":126
+ *         c = self.findstart()
+ *         if not c.findnext(k):
+ *             raise KeyError("'" + k + "'")             # <<<<<<<<<<<<<<
+ *         return c.read()
+ * 
+ */
+    __pyx_t_1 = PyNumber_Add(__pyx_kp_s__4, __pyx_v_k); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_s__4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2);
+    __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_KeyError, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":81
- * 
- *     def read(self, decode=True):
- *         if not self.readable:             # <<<<<<<<<<<<<<
- *             raise Exception('data is unavailable')
- *         buf = bytearray(self.i.dlen)
+    /* "wozozo_cdb/_wozozo_cdb.pyx":125
+ *     def __getitem__(self, k):
+ *         c = self.findstart()
+ *         if not c.findnext(k):             # <<<<<<<<<<<<<<
+ *             raise KeyError("'" + k + "'")
+ *         return c.read()
  */
   }
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":83
- *         if not self.readable:
- *             raise Exception('data is unavailable')
- *         buf = bytearray(self.i.dlen)             # <<<<<<<<<<<<<<
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
- *         if retval < 0:
- */
-  __pyx_t_2 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GIVEREF(__pyx_t_2);
-  PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
-  __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyByteArray_Type)), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 83; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_v_buf = __pyx_t_2;
-  __pyx_t_2 = 0;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":84
- *             raise Exception('data is unavailable')
- *         buf = bytearray(self.i.dlen)
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)             # <<<<<<<<<<<<<<
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- */
-  __pyx_t_4 = __Pyx_PyObject_AsString(__pyx_v_buf); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 84; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_retval = cdb_read((&__pyx_v_self->i), __pyx_t_4, __pyx_v_self->i.dlen, __pyx_v_self->i.dpos);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":85
- *         buf = bytearray(self.i.dlen)
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         if decode:
- */
-  __pyx_t_1 = ((__pyx_v_retval < 0) != 0);
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":86
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
- *         if decode:
- *             buf = buf.decode(self.encoding)
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_5);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_3);
-    __pyx_t_2 = 0;
-    __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 86; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":85
- *         buf = bytearray(self.i.dlen)
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         if decode:
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":87
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         if decode:             # <<<<<<<<<<<<<<
- *             buf = buf.decode(self.encoding)
- *         return buf
- */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_decode); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":88
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         if decode:
- *             buf = buf.decode(self.encoding)             # <<<<<<<<<<<<<<
- *         return buf
+  /* "wozozo_cdb/_wozozo_cdb.pyx":127
+ *         if not c.findnext(k):
+ *             raise KeyError("'" + k + "'")
+ *         return c.read()             # <<<<<<<<<<<<<<
  * 
- */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_buf, __pyx_n_s_decode); if (unlikely(!__pyx_t_5)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_2 = NULL;
-    if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_5))) {
-      __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_5);
-      if (likely(__pyx_t_2)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
-        __Pyx_INCREF(__pyx_t_2);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_5, function);
-      }
-    }
-    if (!__pyx_t_2) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_v_self->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __Pyx_GOTREF(__pyx_t_3);
-    } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2); __pyx_t_2 = NULL;
-      __Pyx_INCREF(__pyx_v_self->encoding);
-      __Pyx_GIVEREF(__pyx_v_self->encoding);
-      PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_self->encoding);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 88; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-      __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    }
-    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __Pyx_DECREF_SET(__pyx_v_buf, __pyx_t_3);
-    __pyx_t_3 = 0;
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":87
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         if decode:             # <<<<<<<<<<<<<<
- *             buf = buf.decode(self.encoding)
- *         return buf
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":89
- *         if decode:
- *             buf = buf.decode(self.encoding)
- *         return buf             # <<<<<<<<<<<<<<
  * 
- *     def readbuf(self, buf, n):
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(__pyx_v_buf);
-  __pyx_r = __pyx_v_buf;
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_c, __pyx_n_s_read); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_4 = NULL;
+  if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_1))) {
+    __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_1);
+    if (likely(__pyx_t_4)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_1);
+      __Pyx_INCREF(__pyx_t_4);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_1, function);
+    }
+  }
+  if (__pyx_t_4) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  } else {
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 127; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  }
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":80
- *         return readable
+  /* "wozozo_cdb/_wozozo_cdb.pyx":123
+ *         return CDBCursor(self)
  * 
- *     def read(self, decode=True):             # <<<<<<<<<<<<<<
- *         if not self.readable:
- *             raise Exception('data is unavailable')
+ *     def __getitem__(self, k):             # <<<<<<<<<<<<<<
+ *         c = self.findstart()
+ *         if not c.findnext(k):
  */
 
   /* function exit code */
   __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_XDECREF(__pyx_t_6);
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.read", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_buf);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "wozozo_cdb/_wozozo_cdb.pyx":91
- *         return buf
- * 
- *     def readbuf(self, buf, n):             # <<<<<<<<<<<<<<
- *         if not self.readable:
- *             raise Exception('data is unavailable')
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_11readbuf(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_11readbuf(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  PyObject *__pyx_v_buf = 0;
-  PyObject *__pyx_v_n = 0;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("readbuf (wrapper)", 0);
-  {
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_buf,&__pyx_n_s_n,0};
-    PyObject* values[2] = {0,0};
-    if (unlikely(__pyx_kwds)) {
-      Py_ssize_t kw_args;
-      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
-      switch (pos_args) {
-        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      kw_args = PyDict_Size(__pyx_kwds);
-      switch (pos_args) {
-        case  0:
-        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_buf)) != 0)) kw_args--;
-        else goto __pyx_L5_argtuple_error;
-        case  1:
-        if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_n)) != 0)) kw_args--;
-        else {
-          __Pyx_RaiseArgtupleInvalid("readbuf", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-        }
-      }
-      if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "readbuf") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-      }
-    } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
-      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
-    }
-    __pyx_v_buf = values[0];
-    __pyx_v_n = values[1];
-  }
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("readbuf", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 91; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
-  __pyx_L3_error:;
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.readbuf", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_10readbuf(((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)__pyx_v_self), __pyx_v_buf, __pyx_v_n);
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_3CDB_10readbuf(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *__pyx_v_self, PyObject *__pyx_v_buf, PyObject *__pyx_v_n) {
-  int __pyx_v_retval;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  PyObject *__pyx_t_2 = NULL;
-  Py_ssize_t __pyx_t_3;
-  PyObject *__pyx_t_4 = NULL;
-  char *__pyx_t_5;
-  unsigned int __pyx_t_6;
-  PyObject *__pyx_t_7 = NULL;
-  uint32_t __pyx_t_8;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("readbuf", 0);
-  __Pyx_INCREF(__pyx_v_n);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":92
- * 
- *     def readbuf(self, buf, n):
- *         if not self.readable:             # <<<<<<<<<<<<<<
- *             raise Exception('data is unavailable')
- *         if n > len(buf):
- */
-  __pyx_t_1 = ((!(__pyx_v_self->readable != 0)) != 0);
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":93
- *     def readbuf(self, buf, n):
- *         if not self.readable:
- *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
- *         if n > len(buf):
- *             n = len(buf)
- */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":92
- * 
- *     def readbuf(self, buf, n):
- *         if not self.readable:             # <<<<<<<<<<<<<<
- *             raise Exception('data is unavailable')
- *         if n > len(buf):
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":94
- *         if not self.readable:
- *             raise Exception('data is unavailable')
- *         if n > len(buf):             # <<<<<<<<<<<<<<
- *             n = len(buf)
- *         if n > self.i.dlen:
- */
-  __pyx_t_3 = PyObject_Length(__pyx_v_buf); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = PyObject_RichCompare(__pyx_v_n, __pyx_t_2, Py_GT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 94; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":95
- *             raise Exception('data is unavailable')
- *         if n > len(buf):
- *             n = len(buf)             # <<<<<<<<<<<<<<
- *         if n > self.i.dlen:
- *             n = self.i.dlen
- */
-    __pyx_t_3 = PyObject_Length(__pyx_v_buf); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 95; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_3); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 95; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF_SET(__pyx_v_n, __pyx_t_4);
-    __pyx_t_4 = 0;
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":94
- *         if not self.readable:
- *             raise Exception('data is unavailable')
- *         if n > len(buf):             # <<<<<<<<<<<<<<
- *             n = len(buf)
- *         if n > self.i.dlen:
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":96
- *         if n > len(buf):
- *             n = len(buf)
- *         if n > self.i.dlen:             # <<<<<<<<<<<<<<
- *             n = self.i.dlen
- *         if n < 0:
- */
-  __pyx_t_4 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_n, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 96; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":97
- *             n = len(buf)
- *         if n > self.i.dlen:
- *             n = self.i.dlen             # <<<<<<<<<<<<<<
- *         if n < 0:
- *             raise ValueError('n must be equal to or greater than 0')
- */
-    __pyx_t_2 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 97; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_DECREF_SET(__pyx_v_n, __pyx_t_2);
-    __pyx_t_2 = 0;
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":96
- *         if n > len(buf):
- *             n = len(buf)
- *         if n > self.i.dlen:             # <<<<<<<<<<<<<<
- *             n = self.i.dlen
- *         if n < 0:
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":98
- *         if n > self.i.dlen:
- *             n = self.i.dlen
- *         if n < 0:             # <<<<<<<<<<<<<<
- *             raise ValueError('n must be equal to or greater than 0')
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- */
-  __pyx_t_2 = PyObject_RichCompare(__pyx_v_n, __pyx_int_0, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 98; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":99
- *             n = self.i.dlen
- *         if n < 0:
- *             raise ValueError('n must be equal to or greater than 0')             # <<<<<<<<<<<<<<
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- *         if retval < 0:
- */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 99; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 99; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":98
- *         if n > self.i.dlen:
- *             n = self.i.dlen
- *         if n < 0:             # <<<<<<<<<<<<<<
- *             raise ValueError('n must be equal to or greater than 0')
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":100
- *         if n < 0:
- *             raise ValueError('n must be equal to or greater than 0')
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)             # <<<<<<<<<<<<<<
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- */
-  __pyx_t_5 = __Pyx_PyObject_AsString(__pyx_v_buf); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_6 = __Pyx_PyInt_As_unsigned_int(__pyx_v_n); if (unlikely((__pyx_t_6 == (unsigned int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 100; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_v_retval = cdb_read((&__pyx_v_self->i), __pyx_t_5, __pyx_t_6, __pyx_v_self->i.dpos);
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":101
- *             raise ValueError('n must be equal to or greater than 0')
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.dpos += n
- */
-  __pyx_t_1 = ((__pyx_v_retval < 0) != 0);
-  if (__pyx_t_1) {
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":102
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
- *         self.i.dpos += n
- *         self.i.dlen -= n
- */
-    __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = PyTuple_New(2); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_7);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_2);
-    __Pyx_GIVEREF(__pyx_t_4);
-    PyTuple_SET_ITEM(__pyx_t_7, 1, __pyx_t_4);
-    __pyx_t_2 = 0;
-    __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    __Pyx_GOTREF(__pyx_t_4);
-    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    __Pyx_Raise(__pyx_t_4, 0, 0, 0);
-    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 102; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-
-    /* "wozozo_cdb/_wozozo_cdb.pyx":101
- *             raise ValueError('n must be equal to or greater than 0')
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
- *         if retval < 0:             # <<<<<<<<<<<<<<
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.dpos += n
- */
-  }
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":103
- *         if retval < 0:
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.dpos += n             # <<<<<<<<<<<<<<
- *         self.i.dlen -= n
- * 
- */
-  __pyx_t_4 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dpos); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 103; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_7 = PyNumber_InPlaceAdd(__pyx_t_4, __pyx_v_n); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 103; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_uint32_t(__pyx_t_7); if (unlikely((__pyx_t_8 == (uint32_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 103; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_self->i.dpos = __pyx_t_8;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":104
- *             raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.dpos += n
- *         self.i.dlen -= n             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_t_7 = __Pyx_PyInt_From_uint32_t(__pyx_v_self->i.dlen); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_4 = PyNumber_InPlaceSubtract(__pyx_t_7, __pyx_v_n); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_t_8 = __Pyx_PyInt_As_uint32_t(__pyx_t_4); if (unlikely((__pyx_t_8 == (uint32_t)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 104; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_self->i.dlen = __pyx_t_8;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":91
- *         return buf
- * 
- *     def readbuf(self, buf, n):             # <<<<<<<<<<<<<<
- *         if not self.readable:
- *             raise Exception('data is unavailable')
- */
-
-  /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.readbuf", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDB.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_n);
+  __Pyx_XDECREF(__pyx_v_c);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":112
+/* "wozozo_cdb/_wozozo_cdb.pyx":135
  *     cdef str encoding
  * 
  *     def __cinit__(self, file, encoding='ascii'):             # <<<<<<<<<<<<<<
@@ -2213,7 +2684,7 @@ static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_7CDBMake_1__cinit__(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 135; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2228,7 +2699,7 @@ static int __pyx_pw_10wozozo_cdb_11_wozozo_cdb_7CDBMake_1__cinit__(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 112; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 135; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBMake.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2253,7 +2724,7 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_o
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":113
+  /* "wozozo_cdb/_wozozo_cdb.pyx":136
  * 
  *     def __cinit__(self, file, encoding='ascii'):
  *         self.file = file             # <<<<<<<<<<<<<<
@@ -2266,14 +2737,14 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_o
   __Pyx_DECREF(__pyx_v_self->file);
   __pyx_v_self->file = __pyx_v_file;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":114
+  /* "wozozo_cdb/_wozozo_cdb.pyx":137
  *     def __cinit__(self, file, encoding='ascii'):
  *         self.file = file
  *         self.encoding = encoding             # <<<<<<<<<<<<<<
  *         cdb_make_start(&self.i, file.fileno())
  * 
  */
-  if (!(likely(PyString_CheckExact(__pyx_v_encoding))||((__pyx_v_encoding) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_encoding)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 114; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyString_CheckExact(__pyx_v_encoding))||((__pyx_v_encoding) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_v_encoding)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 137; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_t_1 = __pyx_v_encoding;
   __Pyx_INCREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
@@ -2282,14 +2753,14 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_o
   __pyx_v_self->encoding = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":115
+  /* "wozozo_cdb/_wozozo_cdb.pyx":138
  *         self.file = file
  *         self.encoding = encoding
  *         cdb_make_start(&self.i, file.fileno())             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_file, __pyx_n_s_fileno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_file, __pyx_n_s_fileno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2302,18 +2773,18 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_o
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 115; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 138; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   cdb_make_start((&__pyx_v_self->i), __pyx_t_4);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":112
+  /* "wozozo_cdb/_wozozo_cdb.pyx":135
  *     cdef str encoding
  * 
  *     def __cinit__(self, file, encoding='ascii'):             # <<<<<<<<<<<<<<
@@ -2335,7 +2806,7 @@ static int __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake___cinit__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":117
+/* "wozozo_cdb/_wozozo_cdb.pyx":140
  *         cdb_make_start(&self.i, file.fileno())
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2364,14 +2835,14 @@ static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_2__dealloc__(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":118
+  /* "wozozo_cdb/_wozozo_cdb.pyx":141
  * 
  *     def __dealloc__(self):
  *         self.finish()             # <<<<<<<<<<<<<<
  * 
  *     cdef bytes _chars(self, s):
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_finish); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_finish); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2384,16 +2855,16 @@ static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_2__dealloc__(struct __p
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 118; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":117
+  /* "wozozo_cdb/_wozozo_cdb.pyx":140
  *         cdb_make_start(&self.i, file.fileno())
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2412,7 +2883,7 @@ static void __pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_2__dealloc__(struct __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":120
+/* "wozozo_cdb/_wozozo_cdb.pyx":143
  *         self.finish()
  * 
  *     cdef bytes _chars(self, s):             # <<<<<<<<<<<<<<
@@ -2435,7 +2906,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
   __Pyx_RefNannySetupContext("_chars", 0);
   __Pyx_INCREF(__pyx_v_s);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":121
+  /* "wozozo_cdb/_wozozo_cdb.pyx":144
  * 
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):             # <<<<<<<<<<<<<<
@@ -2446,14 +2917,14 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":122
+    /* "wozozo_cdb/_wozozo_cdb.pyx":145
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):
  *             s = (<unicode>s).encode(self.encoding)             # <<<<<<<<<<<<<<
  *         return s
  * 
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_s, __pyx_n_s_encode); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_5 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2466,16 +2937,16 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
       }
     }
     if (!__pyx_t_5) {
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_self->encoding); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
     } else {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
       __Pyx_INCREF(__pyx_v_self->encoding);
       __Pyx_GIVEREF(__pyx_v_self->encoding);
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_self->encoding);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 122; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -2483,7 +2954,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
     __Pyx_DECREF_SET(__pyx_v_s, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":121
+    /* "wozozo_cdb/_wozozo_cdb.pyx":144
  * 
  *     cdef bytes _chars(self, s):
  *         if isinstance(s, unicode):             # <<<<<<<<<<<<<<
@@ -2492,7 +2963,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
  */
   }
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":123
+  /* "wozozo_cdb/_wozozo_cdb.pyx":146
  *         if isinstance(s, unicode):
  *             s = (<unicode>s).encode(self.encoding)
  *         return s             # <<<<<<<<<<<<<<
@@ -2500,12 +2971,12 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
  *     property file:
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyBytes_CheckExact(__pyx_v_s))||((__pyx_v_s) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_s)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (!(likely(PyBytes_CheckExact(__pyx_v_s))||((__pyx_v_s) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_s)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 146; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_INCREF(__pyx_v_s);
   __pyx_r = ((PyObject*)__pyx_v_s);
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":120
+  /* "wozozo_cdb/_wozozo_cdb.pyx":143
  *         self.finish()
  * 
  *     cdef bytes _chars(self, s):             # <<<<<<<<<<<<<<
@@ -2528,7 +2999,7 @@ static PyObject *__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars(struct __pyx
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":126
+/* "wozozo_cdb/_wozozo_cdb.pyx":149
  * 
  *     property file:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2554,7 +3025,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4file___get__(stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":127
+  /* "wozozo_cdb/_wozozo_cdb.pyx":150
  *     property file:
  *         def __get__(self):
  *             return self.file             # <<<<<<<<<<<<<<
@@ -2566,7 +3037,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4file___get__(stru
   __pyx_r = __pyx_v_self->file;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":126
+  /* "wozozo_cdb/_wozozo_cdb.pyx":149
  * 
  *     property file:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2581,7 +3052,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4file___get__(stru
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":130
+/* "wozozo_cdb/_wozozo_cdb.pyx":153
  * 
  *     property encoding:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2607,7 +3078,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_8encoding___get__(
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":131
+  /* "wozozo_cdb/_wozozo_cdb.pyx":154
  *     property encoding:
  *         def __get__(self):
  *             return self.encoding             # <<<<<<<<<<<<<<
@@ -2619,7 +3090,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_8encoding___get__(
   __pyx_r = __pyx_v_self->encoding;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":130
+  /* "wozozo_cdb/_wozozo_cdb.pyx":153
  * 
  *     property encoding:
  *         def __get__(self):             # <<<<<<<<<<<<<<
@@ -2634,7 +3105,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_8encoding___get__(
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":133
+/* "wozozo_cdb/_wozozo_cdb.pyx":156
  *             return self.encoding
  * 
  *     def finish(self):             # <<<<<<<<<<<<<<
@@ -2667,7 +3138,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("finish", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":134
+  /* "wozozo_cdb/_wozozo_cdb.pyx":157
  * 
  *     def finish(self):
  *         if self.i.fd >= 0:             # <<<<<<<<<<<<<<
@@ -2677,28 +3148,28 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __p
   __pyx_t_1 = ((__pyx_v_self->i.fd >= 0) != 0);
   if (__pyx_t_1) {
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":135
+    /* "wozozo_cdb/_wozozo_cdb.pyx":158
  *     def finish(self):
  *         if self.i.fd >= 0:
  *             if cdb_make_finish(&self.i) < 0:             # <<<<<<<<<<<<<<
  *                 raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.fd = -1
+ *             self.i.fd = -1
  */
     __pyx_t_1 = ((cdb_make_finish((&__pyx_v_self->i)) < 0) != 0);
     if (__pyx_t_1) {
 
-      /* "wozozo_cdb/_wozozo_cdb.pyx":136
+      /* "wozozo_cdb/_wozozo_cdb.pyx":159
  *         if self.i.fd >= 0:
  *             if cdb_make_finish(&self.i) < 0:
  *                 raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
- *         self.i.fd = -1
+ *             self.i.fd = -1
  * 
  */
-      __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_2 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_3 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -2706,23 +3177,32 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __p
       PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
       __pyx_t_2 = 0;
       __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 136; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      {__pyx_filename = __pyx_f[0]; __pyx_lineno = 159; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-      /* "wozozo_cdb/_wozozo_cdb.pyx":135
+      /* "wozozo_cdb/_wozozo_cdb.pyx":158
  *     def finish(self):
  *         if self.i.fd >= 0:
  *             if cdb_make_finish(&self.i) < 0:             # <<<<<<<<<<<<<<
  *                 raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.fd = -1
+ *             self.i.fd = -1
  */
     }
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":134
+    /* "wozozo_cdb/_wozozo_cdb.pyx":160
+ *             if cdb_make_finish(&self.i) < 0:
+ *                 raise IOError(errno.errno, strerror(errno.errno))
+ *             self.i.fd = -1             # <<<<<<<<<<<<<<
+ * 
+ *     def add(self, key, data):
+ */
+    __pyx_v_self->i.fd = -1;
+
+    /* "wozozo_cdb/_wozozo_cdb.pyx":157
  * 
  *     def finish(self):
  *         if self.i.fd >= 0:             # <<<<<<<<<<<<<<
@@ -2731,16 +3211,7 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __p
  */
   }
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":137
- *             if cdb_make_finish(&self.i) < 0:
- *                 raise IOError(errno.errno, strerror(errno.errno))
- *         self.i.fd = -1             # <<<<<<<<<<<<<<
- * 
- *     def add(self, key, data):
- */
-  __pyx_v_self->i.fd = -1;
-
-  /* "wozozo_cdb/_wozozo_cdb.pyx":133
+  /* "wozozo_cdb/_wozozo_cdb.pyx":156
  *             return self.encoding
  * 
  *     def finish(self):             # <<<<<<<<<<<<<<
@@ -2763,8 +3234,8 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_4finish(struct __p
   return __pyx_r;
 }
 
-/* "wozozo_cdb/_wozozo_cdb.pyx":139
- *         self.i.fd = -1
+/* "wozozo_cdb/_wozozo_cdb.pyx":162
+ *             self.i.fd = -1
  * 
  *     def add(self, key, data):             # <<<<<<<<<<<<<<
  *         cdef bytes key_b = self._chars(key)
@@ -2802,11 +3273,11 @@ static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_7CDBMake_7add(PyObject *__p
         case  1:
         if (likely((values[1] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_data)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+          __Pyx_RaiseArgtupleInvalid("add", 1, 2, 2, 1); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -2819,7 +3290,7 @@ static PyObject *__pyx_pw_10wozozo_cdb_11_wozozo_cdb_7CDBMake_7add(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 139; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __Pyx_RaiseArgtupleInvalid("add", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 162; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_AddTraceback("wozozo_cdb._wozozo_cdb.CDBMake.add", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2851,52 +3322,52 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":140
+  /* "wozozo_cdb/_wozozo_cdb.pyx":163
  * 
  *     def add(self, key, data):
  *         cdef bytes key_b = self._chars(key)             # <<<<<<<<<<<<<<
  *         cdef bytes data_b = self._chars(data)
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDBMake *)__pyx_v_self->__pyx_vtab)->_chars(__pyx_v_self, __pyx_v_key); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 140; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDBMake *)__pyx_v_self->__pyx_vtab)->_chars(__pyx_v_self, __pyx_v_key); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 163; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_key_b = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":141
+  /* "wozozo_cdb/_wozozo_cdb.pyx":164
  *     def add(self, key, data):
  *         cdef bytes key_b = self._chars(key)
  *         cdef bytes data_b = self._chars(data)             # <<<<<<<<<<<<<<
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))
  *         if retval < 0:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDBMake *)__pyx_v_self->__pyx_vtab)->_chars(__pyx_v_self, __pyx_v_data); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 141; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = ((struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDBMake *)__pyx_v_self->__pyx_vtab)->_chars(__pyx_v_self, __pyx_v_data); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 164; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_data_b = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":142
+  /* "wozozo_cdb/_wozozo_cdb.pyx":165
  *         cdef bytes key_b = self._chars(key)
  *         cdef bytes data_b = self._chars(data)
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))             # <<<<<<<<<<<<<<
  *         if retval < 0:
  *             raise IOError(errno.errno, strerror(errno.errno))
  */
-  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_key_b); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_key_b); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (unlikely(__pyx_v_key_b == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_key_b); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_t_4 = __Pyx_PyObject_AsString(__pyx_v_data_b); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_key_b); if (unlikely(__pyx_t_3 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_4 = __Pyx_PyObject_AsString(__pyx_v_data_b); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   if (unlikely(__pyx_v_data_b == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_t_5 = PyBytes_GET_SIZE(__pyx_v_data_b); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 142; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_5 = PyBytes_GET_SIZE(__pyx_v_data_b); if (unlikely(__pyx_t_5 == -1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 165; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_v_retval = cdb_make_add((&__pyx_v_self->i), __pyx_t_2, __pyx_t_3, __pyx_t_4, __pyx_t_5);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":143
+  /* "wozozo_cdb/_wozozo_cdb.pyx":166
  *         cdef bytes data_b = self._chars(data)
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))
  *         if retval < 0:             # <<<<<<<<<<<<<<
@@ -2906,17 +3377,17 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_
   __pyx_t_6 = ((__pyx_v_retval < 0) != 0);
   if (__pyx_t_6) {
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":144
+    /* "wozozo_cdb/_wozozo_cdb.pyx":167
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))
  *         if retval < 0:
  *             raise IOError(errno.errno, strerror(errno.errno))             # <<<<<<<<<<<<<<
  *         return retval == 0
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_1 = __Pyx_PyInt_From_int(errno); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyBytes_FromString(strerror(errno)); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_1);
@@ -2924,14 +3395,14 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_
     PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_7);
     __pyx_t_1 = 0;
     __pyx_t_7 = 0;
-    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_IOError, __pyx_t_8, NULL); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_Raise(__pyx_t_7, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 144; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 167; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-    /* "wozozo_cdb/_wozozo_cdb.pyx":143
+    /* "wozozo_cdb/_wozozo_cdb.pyx":166
  *         cdef bytes data_b = self._chars(data)
  *         cdef int retval = cdb_make_add(&self.i, key_b, len(key_b), data_b, len(data_b))
  *         if retval < 0:             # <<<<<<<<<<<<<<
@@ -2940,20 +3411,20 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_
  */
   }
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":145
+  /* "wozozo_cdb/_wozozo_cdb.pyx":168
  *         if retval < 0:
  *             raise IOError(errno.errno, strerror(errno.errno))
  *         return retval == 0             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyBool_FromLong((__pyx_v_retval == 0)); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 145; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_7 = __Pyx_PyBool_FromLong((__pyx_v_retval == 0)); if (unlikely(!__pyx_t_7)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 168; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_7);
   __pyx_r = __pyx_t_7;
   __pyx_t_7 = 0;
   goto __pyx_L0;
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":139
- *         self.i.fd = -1
+  /* "wozozo_cdb/_wozozo_cdb.pyx":162
+ *             self.i.fd = -1
  * 
  *     def add(self, key, data):             # <<<<<<<<<<<<<<
  *         cdef bytes key_b = self._chars(key)
@@ -2974,6 +3445,132 @@ static PyObject *__pyx_pf_10wozozo_cdb_11_wozozo_cdb_7CDBMake_6add(struct __pyx_
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
+
+static PyObject *__pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDBCursor(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *p;
+  PyObject *o;
+  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
+    o = (*t->tp_alloc)(t, 0);
+  } else {
+    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
+  }
+  if (unlikely(!o)) return 0;
+  p = ((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)o);
+  p->o = ((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)Py_None); Py_INCREF(Py_None);
+  if (unlikely(__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_1__cinit__(o, a, k) < 0)) {
+    Py_DECREF(o); o = 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_10wozozo_cdb_11_wozozo_cdb_CDBCursor(PyObject *o) {
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *p = (struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)o;
+  #if PY_VERSION_HEX >= 0x030400a1
+  if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->o);
+  (*Py_TYPE(o)->tp_free)(o);
+}
+
+static int __pyx_tp_traverse_10wozozo_cdb_11_wozozo_cdb_CDBCursor(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *p = (struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)o;
+  if (p->o) {
+    e = (*v)(((PyObject*)p->o), a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_10wozozo_cdb_11_wozozo_cdb_CDBCursor(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *p = (struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor *)o;
+  tmp = ((PyObject*)p->o);
+  p->o = ((struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
+static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_dpos(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dpos_1__get__(o);
+}
+
+static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_dlen(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_4dlen_1__get__(o);
+}
+
+static PyMethodDef __pyx_methods_10wozozo_cdb_11_wozozo_cdb_CDBCursor[] = {
+  {"findnext", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_3findnext, METH_O, 0},
+  {"read", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_5read, METH_VARARGS|METH_KEYWORDS, 0},
+  {"readbuf", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_7readbuf, METH_VARARGS|METH_KEYWORDS, 0},
+  {0, 0, 0, 0}
+};
+
+static struct PyGetSetDef __pyx_getsets_10wozozo_cdb_11_wozozo_cdb_CDBCursor[] = {
+  {(char *)"dpos", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_dpos, 0, 0, 0},
+  {(char *)"dlen", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_9CDBCursor_dlen, 0, 0, 0},
+  {0, 0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBCursor = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "wozozo_cdb._wozozo_cdb.CDBCursor", /*tp_name*/
+  sizeof(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBCursor), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_traverse*/
+  __pyx_tp_clear_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_methods*/
+  0, /*tp_members*/
+  __pyx_getsets_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDBCursor, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
 static struct __pyx_vtabstruct_10wozozo_cdb_11_wozozo_cdb_CDB __pyx_vtable_10wozozo_cdb_11_wozozo_cdb_CDB;
 
 static PyObject *__pyx_tp_new_10wozozo_cdb_11_wozozo_cdb_CDB(PyTypeObject *t, PyObject *a, PyObject *k) {
@@ -3033,6 +3630,13 @@ static int __pyx_tp_clear_10wozozo_cdb_11_wozozo_cdb_CDB(PyObject *o) {
   Py_XDECREF(tmp);
   return 0;
 }
+static PyObject *__pyx_sq_item_10wozozo_cdb_11_wozozo_cdb_CDB(PyObject *o, Py_ssize_t i) {
+  PyObject *r;
+  PyObject *x = PyInt_FromSsize_t(i); if(!x) return 0;
+  r = Py_TYPE(o)->tp_as_mapping->mp_subscript(o, x);
+  Py_DECREF(x);
+  return r;
+}
 
 static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_file(PyObject *o, CYTHON_UNUSED void *x) {
   return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4file_1__get__(o);
@@ -3042,28 +3646,35 @@ static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_encoding(PyObject
   return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_8encoding_1__get__(o);
 }
 
-static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_dpos(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dpos_1__get__(o);
-}
-
-static PyObject *__pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_dlen(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_4dlen_1__get__(o);
-}
-
 static PyMethodDef __pyx_methods_10wozozo_cdb_11_wozozo_cdb_CDB[] = {
-  {"findstart", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5findstart, METH_NOARGS, 0},
-  {"findnext", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findnext, METH_O, 0},
-  {"read", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9read, METH_VARARGS|METH_KEYWORDS, 0},
-  {"readbuf", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_11readbuf, METH_VARARGS|METH_KEYWORDS, 0},
+  {"free", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_5free, METH_NOARGS, 0},
+  {"findstart", (PyCFunction)__pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_7findstart, METH_NOARGS, 0},
   {0, 0, 0, 0}
 };
 
 static struct PyGetSetDef __pyx_getsets_10wozozo_cdb_11_wozozo_cdb_CDB[] = {
   {(char *)"file", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_file, 0, 0, 0},
   {(char *)"encoding", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_encoding, 0, 0, 0},
-  {(char *)"dpos", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_dpos, 0, 0, 0},
-  {(char *)"dlen", __pyx_getprop_10wozozo_cdb_11_wozozo_cdb_3CDB_dlen, 0, 0, 0},
   {0, 0, 0, 0, 0}
+};
+
+static PySequenceMethods __pyx_tp_as_sequence_CDB = {
+  0, /*sq_length*/
+  0, /*sq_concat*/
+  0, /*sq_repeat*/
+  __pyx_sq_item_10wozozo_cdb_11_wozozo_cdb_CDB, /*sq_item*/
+  0, /*sq_slice*/
+  0, /*sq_ass_item*/
+  0, /*sq_ass_slice*/
+  0, /*sq_contains*/
+  0, /*sq_inplace_concat*/
+  0, /*sq_inplace_repeat*/
+};
+
+static PyMappingMethods __pyx_tp_as_mapping_CDB = {
+  0, /*mp_length*/
+  __pyx_pw_10wozozo_cdb_11_wozozo_cdb_3CDB_9__getitem__, /*mp_subscript*/
+  0, /*mp_ass_subscript*/
 };
 
 static PyTypeObject __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB = {
@@ -3083,8 +3694,8 @@ static PyTypeObject __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB = {
   #endif
   0, /*tp_repr*/
   0, /*tp_as_number*/
-  0, /*tp_as_sequence*/
-  0, /*tp_as_mapping*/
+  &__pyx_tp_as_sequence_CDB, /*tp_as_sequence*/
+  &__pyx_tp_as_mapping_CDB, /*tp_as_mapping*/
   0, /*tp_hash*/
   0, /*tp_call*/
   0, /*tp_str*/
@@ -3286,7 +3897,9 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Exception, __pyx_k_Exception, sizeof(__pyx_k_Exception), 0, 0, 1, 1},
   {&__pyx_n_s_IOError, __pyx_k_IOError, sizeof(__pyx_k_IOError), 0, 0, 1, 1},
+  {&__pyx_n_s_KeyError, __pyx_k_KeyError, sizeof(__pyx_k_KeyError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
+  {&__pyx_kp_s__4, __pyx_k__4, sizeof(__pyx_k__4), 0, 0, 1, 0},
   {&__pyx_n_s_ascii, __pyx_k_ascii, sizeof(__pyx_k_ascii), 0, 0, 1, 1},
   {&__pyx_n_s_buf, __pyx_k_buf, sizeof(__pyx_k_buf), 0, 0, 1, 1},
   {&__pyx_n_s_data, __pyx_k_data, sizeof(__pyx_k_data), 0, 0, 1, 1},
@@ -3296,19 +3909,25 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_encoding, __pyx_k_encoding, sizeof(__pyx_k_encoding), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_fileno, __pyx_k_fileno, sizeof(__pyx_k_fileno), 0, 0, 1, 1},
+  {&__pyx_n_s_findnext, __pyx_k_findnext, sizeof(__pyx_k_findnext), 0, 0, 1, 1},
+  {&__pyx_n_s_findstart, __pyx_k_findstart, sizeof(__pyx_k_findstart), 0, 0, 1, 1},
   {&__pyx_n_s_finish, __pyx_k_finish, sizeof(__pyx_k_finish), 0, 0, 1, 1},
+  {&__pyx_n_s_free, __pyx_k_free, sizeof(__pyx_k_free), 0, 0, 1, 1},
   {&__pyx_n_s_key, __pyx_k_key, sizeof(__pyx_k_key), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_n, __pyx_k_n, sizeof(__pyx_k_n), 0, 0, 1, 1},
   {&__pyx_kp_s_n_must_be_equal_to_or_greater_th, __pyx_k_n_must_be_equal_to_or_greater_th, sizeof(__pyx_k_n_must_be_equal_to_or_greater_th), 0, 0, 1, 0},
+  {&__pyx_n_s_o, __pyx_k_o, sizeof(__pyx_k_o), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_vtable, __pyx_k_pyx_vtable, sizeof(__pyx_k_pyx_vtable), 0, 0, 1, 1},
+  {&__pyx_n_s_read, __pyx_k_read, sizeof(__pyx_k_read), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 75; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 99; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_IOError = __Pyx_GetBuiltinName(__pyx_n_s_IOError); if (!__pyx_builtin_IOError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 126; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3318,36 +3937,36 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":82
+  /* "wozozo_cdb/_wozozo_cdb.pyx":62
  *     def read(self, decode=True):
  *         if not self.readable:
  *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
  *         buf = bytearray(self.i.dlen)
- *         retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
+ *         retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_data_is_unavailable); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 82; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_data_is_unavailable); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":93
+  /* "wozozo_cdb/_wozozo_cdb.pyx":73
  *     def readbuf(self, buf, n):
  *         if not self.readable:
  *             raise Exception('data is unavailable')             # <<<<<<<<<<<<<<
  *         if n > len(buf):
  *             n = len(buf)
  */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_data_is_unavailable); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 93; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_data_is_unavailable); if (unlikely(!__pyx_tuple__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 73; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "wozozo_cdb/_wozozo_cdb.pyx":99
+  /* "wozozo_cdb/_wozozo_cdb.pyx":79
  *             n = self.i.dlen
  *         if n < 0:
  *             raise ValueError('n must be equal to or greater than 0')             # <<<<<<<<<<<<<<
- *         retval = cdb_read(&self.i, buf, n, self.i.dpos)
+ *         retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
  *         if retval < 0:
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_n_must_be_equal_to_or_greater_th); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 99; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_n_must_be_equal_to_or_greater_th); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 79; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
   __Pyx_RefNannyFinishContext();
@@ -3451,19 +4070,23 @@ PyMODINIT_FUNC PyInit__wozozo_cdb(void)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
+  if (PyType_Ready(&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBCursor) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 34; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBCursor.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "CDBCursor", (PyObject *)&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBCursor) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 34; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDBCursor = &__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBCursor;
   __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDB = &__pyx_vtable_10wozozo_cdb_11_wozozo_cdb_CDB;
   __pyx_vtable_10wozozo_cdb_11_wozozo_cdb_CDB._chars = (PyObject *(*)(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDB *, PyObject *))__pyx_f_10wozozo_cdb_11_wozozo_cdb_3CDB__chars;
-  if (PyType_Ready(&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 32; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB.tp_dict, __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 32; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "CDB", (PyObject *)&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 32; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB.tp_dict, __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "CDB", (PyObject *)&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 89; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDB = &__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDB;
   __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDBMake = &__pyx_vtable_10wozozo_cdb_11_wozozo_cdb_CDBMake;
   __pyx_vtable_10wozozo_cdb_11_wozozo_cdb_CDBMake._chars = (PyObject *(*)(struct __pyx_obj_10wozozo_cdb_11_wozozo_cdb_CDBMake *, PyObject *))__pyx_f_10wozozo_cdb_11_wozozo_cdb_7CDBMake__chars;
-  if (PyType_Ready(&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyType_Ready(&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake.tp_dict, __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "CDBMake", (PyObject *)&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 107; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (__Pyx_SetVtable(__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake.tp_dict, __pyx_vtabptr_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "CDBMake", (PyObject *)&__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 130; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_ptype_10wozozo_cdb_11_wozozo_cdb_CDBMake = &__pyx_type_10wozozo_cdb_11_wozozo_cdb_CDBMake;
   /*--- Type import code ---*/
   /*--- Variable import code ---*/
@@ -3674,6 +4297,32 @@ static void __Pyx_RaiseArgtupleInvalid(
                  (num_expected == 1) ? "" : "s", num_found);
 }
 
+static void __Pyx_RaiseArgumentTypeInvalid(const char* name, PyObject *obj, PyTypeObject *type) {
+    PyErr_Format(PyExc_TypeError,
+        "Argument '%.200s' has incorrect type (expected %.200s, got %.200s)",
+        name, type->tp_name, Py_TYPE(obj)->tp_name);
+}
+static CYTHON_INLINE int __Pyx_ArgTypeTest(PyObject *obj, PyTypeObject *type, int none_allowed,
+    const char *name, int exact)
+{
+    if (unlikely(!type)) {
+        PyErr_SetString(PyExc_SystemError, "Missing type object");
+        return 0;
+    }
+    if (none_allowed && obj == Py_None) return 1;
+    else if (exact) {
+        if (likely(Py_TYPE(obj) == type)) return 1;
+        #if PY_MAJOR_VERSION == 2
+        else if ((type == &PyBaseString_Type) && likely(__Pyx_PyBaseString_CheckExact(obj))) return 1;
+        #endif
+    }
+    else {
+        if (likely(PyObject_TypeCheck(obj, type))) return 1;
+    }
+    __Pyx_RaiseArgumentTypeInvalid(name, obj, type);
+    return 0;
+}
+
 #if CYTHON_COMPILING_IN_CPYTHON
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
     PyObject *result;
@@ -3690,74 +4339,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             "NULL result without error in PyObject_Call");
     }
     return result;
-}
-#endif
-
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
-    PyObject *self, *result;
-    PyCFunction cfunc;
-    cfunc = PyCFunction_GET_FUNCTION(func);
-    self = PyCFunction_GET_SELF(func);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = cfunc(self, arg);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
-
-#if CYTHON_COMPILING_IN_CPYTHON
-static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_New(1);
-    if (unlikely(!args)) return NULL;
-    Py_INCREF(arg);
-    PyTuple_SET_ITEM(args, 0, arg);
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
-    return result;
-}
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || PyObject_TypeCheck(func, __pyx_CyFunctionType))) {
-#else
-    if (likely(PyCFunction_Check(func))) {
-#endif
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
-            return __Pyx_PyObject_CallMethO(func, arg);
-        }
-    }
-    return __Pyx__PyObject_CallOneArg(func, arg);
-}
-#else
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
-    PyObject *result;
-    PyObject *args = PyTuple_Pack(1, arg);
-    if (unlikely(!args)) return NULL;
-    result = __Pyx_PyObject_Call(func, args, NULL);
-    Py_DECREF(args);
-    return result;
-}
-#endif
-
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || PyObject_TypeCheck(func, __pyx_CyFunctionType))) {
-#else
-    if (likely(PyCFunction_Check(func))) {
-#endif
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
-            return __Pyx_PyObject_CallMethO(func, NULL);
-        }
-    }
-    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
 }
 #endif
 
@@ -3949,6 +4530,74 @@ static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject 
 bad:
     Py_XDECREF(owned_instance);
     return;
+}
+#endif
+
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallMethO(PyObject *func, PyObject *arg) {
+    PyObject *self, *result;
+    PyCFunction cfunc;
+    cfunc = PyCFunction_GET_FUNCTION(func);
+    self = PyCFunction_GET_SELF(func);
+    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
+        return NULL;
+    result = cfunc(self, arg);
+    Py_LeaveRecursiveCall();
+    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
+        PyErr_SetString(
+            PyExc_SystemError,
+            "NULL result without error in PyObject_Call");
+    }
+    return result;
+}
+#endif
+
+#if CYTHON_COMPILING_IN_CPYTHON
+static PyObject* __Pyx__PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_New(1);
+    if (unlikely(!args)) return NULL;
+    Py_INCREF(arg);
+    PyTuple_SET_ITEM(args, 0, arg);
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || PyObject_TypeCheck(func, __pyx_CyFunctionType))) {
+#else
+    if (likely(PyCFunction_Check(func))) {
+#endif
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_O)) {
+            return __Pyx_PyObject_CallMethO(func, arg);
+        }
+    }
+    return __Pyx__PyObject_CallOneArg(func, arg);
+}
+#else
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallOneArg(PyObject *func, PyObject *arg) {
+    PyObject *result;
+    PyObject *args = PyTuple_Pack(1, arg);
+    if (unlikely(!args)) return NULL;
+    result = __Pyx_PyObject_Call(func, args, NULL);
+    Py_DECREF(args);
+    return result;
+}
+#endif
+
+#if CYTHON_COMPILING_IN_CPYTHON
+static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
+#ifdef __Pyx_CyFunction_USED
+    if (likely(PyCFunction_Check(func) || PyObject_TypeCheck(func, __pyx_CyFunctionType))) {
+#else
+    if (likely(PyCFunction_Check(func))) {
+#endif
+        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
+            return __Pyx_PyObject_CallMethO(func, NULL);
+        }
+    }
+    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
 }
 #endif
 
@@ -4164,6 +4813,58 @@ bad:
     Py_XDECREF(py_frame);
 }
 
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value) {
+    const uint32_t neg_one = (uint32_t) -1, const_zero = (uint32_t) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(uint32_t) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(uint32_t) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+        } else if (sizeof(uint32_t) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+        }
+    } else {
+        if (sizeof(uint32_t) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(uint32_t) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(uint32_t),
+                                     little, !is_unsigned);
+    }
+}
+
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+    const int neg_one = (int) -1, const_zero = (int) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+    }
+}
+
 #define __PYX_VERIFY_RETURN_INT(target_type, func_type, func_value)\
     __PYX__VERIFY_RETURN_INT(target_type, func_type, func_value, 0)
 #define __PYX_VERIFY_RETURN_INT_EXC(target_type, func_type, func_value)\
@@ -4371,58 +5072,6 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
-}
-
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint32_t(uint32_t value) {
-    const uint32_t neg_one = (uint32_t) -1, const_zero = (uint32_t) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(uint32_t) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(uint32_t) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-        } else if (sizeof(uint32_t) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-        }
-    } else {
-        if (sizeof(uint32_t) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(uint32_t) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(uint32_t),
-                                     little, !is_unsigned);
-    }
-}
-
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
-    const int neg_one = (int) -1, const_zero = (int) 0;
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-        }
-    } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-    }
 }
 
 static CYTHON_INLINE unsigned int __Pyx_PyInt_As_unsigned_int(PyObject *x) {

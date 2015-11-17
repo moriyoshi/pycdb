@@ -5,17 +5,19 @@ from libc.string cimport strerror
 cdef extern from "cdb.h":
     ctypedef unsigned int uint32_t
     cdef struct cdb:
+        int fd
+
+    cdef struct cdb_cursor:
         uint32_t dpos
         uint32_t dlen
 
-    void cdb_free(cdb *)
-    void cdb_init(cdb *,int fd)
+    void cdb_free(cdb*)
+    void cdb_init(cdb*, int)
 
-    int cdb_read(cdb *,char *,unsigned int, uint32_t)
+    int cdb_read(cdb* ,char*, unsigned int, uint32_t)
 
-    void cdb_findstart(cdb *)
-    int cdb_findnext(cdb *,const char *,unsigned int)
-    int cdb_find(cdb *,const char *,unsigned int)
+    void cdb_findstart(cdb*, cdb_cursor*)
+    int cdb_findnext(cdb*, const cdb_cursor*, const char*, unsigned int)
 
 
 cdef extern from "cdb_make.h":
@@ -29,11 +31,65 @@ cdef extern from "cdb_make.h":
     int cdb_make_finish(cdb_make *)
 
 
+cdef class CDBCursor:
+    cdef CDB o
+    cdef cdb_cursor i
+    cdef int readable
+
+    def __cinit__(self, CDB o):
+        self.o = o
+        cdb_findstart(&o.i, &self.i)
+
+    property dpos:
+        def __get__(self):
+            return self.i.dpos
+
+    property dlen:
+        def __get__(self):
+            return self.i.dlen
+
+    def findnext(self, key):
+        cdef bytes key_b = self.o._chars(key)
+        cdef int retval = cdb_findnext(&self.o.i, &self.i, key_b, len(key_b))
+        if retval < 0:
+            raise IOError(errno.errno, strerror(errno.errno))
+        readable = retval != 0
+        self.readable = readable
+        return readable
+
+    def read(self, decode=True):
+        if not self.readable:
+            raise Exception('data is unavailable')
+        buf = bytearray(self.i.dlen)
+        retval = cdb_read(&self.o.i, buf, self.i.dlen, self.i.dpos)
+        if retval < 0:
+            raise IOError(errno.errno, strerror(errno.errno))
+        if decode:
+            buf = buf.decode(self.o.encoding)
+        return buf
+
+    def readbuf(self, buf, n):
+        if not self.readable:
+            raise Exception('data is unavailable')
+        if n > len(buf):
+            n = len(buf)
+        if n > self.i.dlen:
+            n = self.i.dlen
+        if n < 0:
+            raise ValueError('n must be equal to or greater than 0')
+        retval = cdb_read(&self.o.i, buf, n, self.i.dpos)
+        if retval < 0:
+            raise IOError(errno.errno, strerror(errno.errno))
+        self.i.dpos += n
+        self.i.dlen -= n
+        return n
+
+    
+
 cdef class CDB:
     cdef cdb i
     cdef object file
     cdef str encoding
-    cdef int readable
 
     def __cinit__(self, file, encoding='ascii'):
         self.file = file
@@ -41,7 +97,7 @@ cdef class CDB:
         cdb_init(&self.i, file.fileno())
 
     def __dealloc__(self):
-        cdb_free(&self.i)
+        self.free()
 
     cdef bytes _chars(self, s):
         if isinstance(s, unicode):
@@ -56,52 +112,19 @@ cdef class CDB:
         def __get__(self):
             return self.encoding
 
-    property dpos:
-        def __get__(self):
-            return self.i.dpos
-
-    property dlen:
-        def __get__(self):
-            return self.i.dlen
+    def free(self):
+        if self.i.fd >= 0:
+            cdb_free(&self.i)
+            self.i.fd = -1
 
     def findstart(self):
-        cdb_findstart(&self.i)
-        self.readable = 0
+        return CDBCursor(self)
 
-    def findnext(self, key):
-        cdef bytes key_b = self._chars(key)
-        cdef int retval = cdb_findnext(&self.i, key_b, len(key_b))
-        if retval < 0:
-            raise IOError(errno.errno, strerror(errno.errno))
-        readable = retval != 0
-        self.readable = readable
-        return readable
-
-    def read(self, decode=True):
-        if not self.readable:
-            raise Exception('data is unavailable')
-        buf = bytearray(self.i.dlen)
-        retval = cdb_read(&self.i, buf, self.i.dlen, self.i.dpos)
-        if retval < 0:
-            raise IOError(errno.errno, strerror(errno.errno))
-        if decode:
-            buf = buf.decode(self.encoding)
-        return buf
-
-    def readbuf(self, buf, n):
-        if not self.readable:
-            raise Exception('data is unavailable')
-        if n > len(buf):
-            n = len(buf)
-        if n > self.i.dlen:
-            n = self.i.dlen
-        if n < 0:
-            raise ValueError('n must be equal to or greater than 0')
-        retval = cdb_read(&self.i, buf, n, self.i.dpos)
-        if retval < 0:
-            raise IOError(errno.errno, strerror(errno.errno))
-        self.i.dpos += n
-        self.i.dlen -= n
+    def __getitem__(self, k):
+        c = self.findstart()
+        if not c.findnext(k):
+            raise KeyError("'" + k + "'")
+        return c.read() 
 
 
 cdef class CDBMake:
@@ -134,7 +157,7 @@ cdef class CDBMake:
         if self.i.fd >= 0:
             if cdb_make_finish(&self.i) < 0:
                 raise IOError(errno.errno, strerror(errno.errno))
-        self.i.fd = -1
+            self.i.fd = -1
 
     def add(self, key, data):
         cdef bytes key_b = self._chars(key)
