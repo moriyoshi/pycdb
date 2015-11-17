@@ -12,11 +12,11 @@ class CDBMakeTest(unittest.TestCase):
         os.unlink(self.file)
 
     def test_open(self):
-        from wozozo_cdb import CDBMake
+        from pycdb import CDBMake
         CDBMake(self.f)
 
     def test_finish_idempotency(self):
-        from wozozo_cdb import CDBMake
+        from pycdb import CDBMake
         c = CDBMake(self.f)
         c.finish()
         v = self.f.tell()
@@ -26,7 +26,7 @@ class CDBMakeTest(unittest.TestCase):
         self.assertEqual(self.f.tell(), v)
 
     def test_add(self):
-        from wozozo_cdb import CDBMake
+        from pycdb import CDBMake
         c = CDBMake(self.f)
         self.assertTrue(c.add('test', 'test'))
         c.finish()
@@ -41,7 +41,7 @@ class CDBTest(unittest.TestCase):
         os.unlink(self.file)
 
     def test_it(self):
-        from wozozo_cdb import CDB
+        from pycdb import CDB
         import base64
         import zlib
         testdata = base64.b64decode(b'eJwT4GAAA4FRetDRTEBaAcofpUfpUXqUHqVHaWrSLFBcklpcAsIMUGC8vriGAagGADizKiQ=')

@@ -6,10 +6,10 @@ except ImportError:
     cythonize = lambda arg: arg
 
 setup(
-    name='wozozo-cdb',
+    name='pycdb',
     version='0.0.0',
     description='Yet another CDB wrapper',
-    url='http://github.com/moriyoshi/wozozo-cdb',
+    url='http://github.com/moriyoshi/pycdb',
     author='Moriyoshi Koizumi',
     author_email='mozo@mozo.jp',
     license='public domain',
@@ -18,15 +18,15 @@ setup(
         'Topic :: Database',
         'License :: Public Domain',
         ],
-    packages=['wozozo_cdb'],
+    packages=['pycdb'],
     ext_modules=cythonize([
         Extension(
-            'wozozo_cdb._wozozo_cdb',
-            include_dirs=['wozozo_cdb'],
+            'pycdb._pycdb',
+            include_dirs=['pycdb'],
             sources=[
-                os.path.join('wozozo_cdb', file_)
+                os.path.join('pycdb', file_)
                 for file_ in [
-                    '_wozozo_cdb.pyx',
+                    '_pycdb.pyx',
                     'alloc.c',
                     'buffer.c',
                     'buffer_2.c',
@@ -50,6 +50,6 @@ setup(
                 ]
             )
         ]),
-    test_suite='wozozo_cdb',
+    test_suite='pycdb',
     zip_safe=False
     )
