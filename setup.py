@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='pycdb',
-    version='0.0.0',
+    version='0.0.1',
     description='Yet another CDB wrapper',
     url='http://github.com/moriyoshi/pycdb',
     author='Moriyoshi Koizumi',
@@ -15,10 +15,36 @@ setup(
     license='public domain',
     classifiers=[
         'Programming Language :: Python',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+        'Development Status :: 5 - Production/Stable',
+        'Intended Audience :: Developers',
         'Topic :: Database',
         'License :: Public Domain',
         ],
+    long_description = open(os.path.abspath(os.path.join(os.path.dirname(__file__), 'README.rst'))).read(),
     packages=['pycdb'],
+    keywords=['cdb', 'cython'],
+    install_requires=[],
+    extra_require={
+        'dev': ['cython'],
+        },
+    package_data={
+        'pycdb': [
+            'alloc.h',
+            'buffer.h',
+            'byte.h',
+            'cdb.h',
+            'cdb_make.h',
+            'error.h',
+            'fmt.h',
+            'readwrite.h',
+            'scan.h',
+            'seek.h',
+            'str.h',
+            'uint32.h',
+            ],
+        },
     ext_modules=cythonize([
         Extension(
             'pycdb._pycdb',

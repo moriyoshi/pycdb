@@ -1,0 +1,5 @@
+include README.rst
+include setup.py
+include pycdb/*.c
+include pycdb/*.h
+include pycdb/*.pyx
